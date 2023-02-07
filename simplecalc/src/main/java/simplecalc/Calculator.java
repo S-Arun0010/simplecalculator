@@ -78,7 +78,7 @@ public class Calculator
 		           break;
 		       case '=':
 		           c = '=';
-		           log.info  ("Result is :" + Calculator.res);
+		           logger.log  ("Result is :" + Calculator.res);
 		           break;
 		       default:
 		           log.info  ("Enter valid operator:");
