@@ -31,7 +31,7 @@ class Div extends Calc{
 }
 public class Calculator
 {
-	  public static double res = 0;
+	   static double res = 0;
 
 	  public static void main (String[]args)
 	  {
@@ -43,7 +43,7 @@ public class Calculator
 	    log.info("Eg, 10 + 20 - 5 * 2 / 2...");
 	    log.info ("To show the result press '=' operator...");
 	    double a = sc.nextDouble ();
-	      res = a;
+	      Calculator.res = a;
 	    double b = 0;
 	    char c = '0';
 	    while (c != '=')
@@ -56,29 +56,29 @@ public class Calculator
 		           
 		           b = sc.nextDouble ();
 		           Calc i = new Add ();
-		           res = i.calculate (res, b);
+		           Calculator.res = i.calculate (Calculator.res, b);
 		           break;
 		       case '-':
 		           
 		           b = sc.nextDouble ();
 		           Calc j = new Sub ();
-		           res = j.calculate (res, b);
+		           Calculator.res = j.calculate (Calculator.res, b);
 		           break;
 		       case '*':
 		           
 		           b = sc.nextDouble ();
 		           Calc k = new Mul ();
-		           res = k.calculate (res, b);
+		           Calculator.res = k.calculate (Calculator.res, b);
 		           break;
 		       case '/':
 		           
 		           b = sc.nextDouble ();
 		           Calc l = new Div ();
-		           res = l.calculate (res, b);
+		          Calculator.res = l.calculate (Calculator.res, b);
 		           break;
 		       case '=':
 		           c = '=';
-		           log.info  ("Result is :" + res);
+		           log.info  ("Result is :" + Calculator.res);
 		           break;
 		       default:
 		           log.info  ("Enter valid operator:");
