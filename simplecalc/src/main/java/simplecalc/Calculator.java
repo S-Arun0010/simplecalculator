@@ -42,7 +42,7 @@ public class Calculator
 	    log.info("Second enter the any operator's among '+' '-' '*' '/'....");
 	    log.info("Eg, 10 + 20 - 5 * 2 / 2...");
 	    log.info ("To show the result press '=' operator...");
-	    double a = sc.nextInt ();
+	    double a = sc.nextDouble ();
 	      res = a;
 	    double b = 0;
 	    char c = '0';
@@ -54,25 +54,25 @@ public class Calculator
 		     {
 		       case '+':
 		           
-		           b = sc.nextInt ();
+		           b = sc.nextDouble ();
 		           Calc i = new Add ();
 		           res = i.calculate (res, b);
 		           break;
 		       case '-':
 		           
-		           b = sc.nextInt ();
+		           b = sc.nextDouble ();
 		           Calc j = new Sub ();
 		           res = j.calculate (res, b);
 		           break;
 		       case '*':
 		           
-		           b = sc.nextInt ();
+		           b = sc.nextDouble ();
 		           Calc k = new Mul ();
 		           res = k.calculate (res, b);
 		           break;
 		       case '/':
 		           
-		           b = sc.nextInt ();
+		           b = sc.nextDouble ();
 		           Calc l = new Div ();
 		           res = l.calculate (res, b);
 		           break;
