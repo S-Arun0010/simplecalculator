@@ -1,87 +1,81 @@
 package simplecalc;
 import java.util.*;
-import java.util.logging.Logger;
-abstract class Calc
+import java.io.FileDescriptor;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
+public class Calculator 
 {   
-    public abstract double calculate(double a,double b);
-}
-class Add extends Calc{
-    public double calculate(double a,double b)
-    {
-        return a+b;
-    }
-}
-class Sub extends Calc{
-    public double calculate(double a,double b)
-    {
-        return a-b;
-    }
-}
-class Mul extends Calc{
-    public double calculate(double a,double b)
-    {
-        return a*b;
-    }
-}
-class Div extends Calc{
-    public double calculate(double a,double b)
-    {
-        return a/b;
-    }
-}
-public class Calculator
-{
-	   static double res = 0;
-
+      
+      static PrintStream print = new PrintStream(new PrintStream(new FileOutputStream(FileDescriptor.out)));	
+	  static  double result = 0;
+	  public static double getinput()
+	  { 
+		  
+		  double number;
+		  do {
+			  Scanner s = new Scanner (System.in);
+			  try
+			  { 		 
+				   number = s.nextDouble ();
+				   break; 
+			  }
+			  catch(InputMismatchException e)
+			  {
+				  print.println(e);
+			  }
+		  }while(true);
+		 
+		  return number;
+	  }
 	  public static void main (String[]args)
 	  {
-	    Logger log = Logger.getLogger ("com.api.jar");
+			 
+	    print.println("To perform operation in this calculator follow the following format.....");
+	    print.println("First enter the number...");
+	    print.println("Second enter the any operator's among '+' '-' '*' '/'....");
+	    print.println("Eg, 10 + 20 - 5 * 2 / 2...");
+	    print.println ("To show the result press '=' operator...");
 	    Scanner sc = new Scanner (System.in);
-	    log.info("To perform operation in this calculator follow the following format.....");
-	    log.info("First enter the number...");
-	    log.info("Second enter the any operator's among '+' '-' '*' '/'....");
-	    log.info("Eg, 10 + 20 - 5 * 2 / 2...");
-	    log.info ("To show the result press '=' operator...");
-	    double a = sc.nextDouble ();
-	      Calculator.res = a;
-	    double b = 0;
-	    char c = '0';
-	    while (c != '=')
+	    double number = getinput();
+	    Calc c;
+	    result = number;
+	    char choice = '0';
+	    while (choice != '=')
 	      {
 	        	
-	        	char opp = sc.next ().charAt (0);
-	    	switch (opp)
+	        char option = sc.next().charAt(0);
+	    	switch (option)
 		     {
 		       case '+':
 		           
-		           b = sc.nextDouble ();
-		           Calc i = new Add ();
-		           Calculator.res = i.calculate (Calculator.res, b);
+		           number = getinput();
+		           c = new Add ();
+		           result = c.calculate(result, number);
 		           break;
 		       case '-':
-		           
-		           b = sc.nextDouble ();
-		           Calc j = new Sub ();
-		           Calculator.res = j.calculate (Calculator.res, b);
+		    	   
+		           number = getinput();
+		           c = new Sub ();
+		           result = c.calculate (result,number);
 		           break;
 		       case '*':
 		           
-		           b = sc.nextDouble ();
-		           Calc k = new Mul ();
-		           Calculator.res = k.calculate (Calculator.res, b);
+		           number = getinput();
+		           c = new Multiply ();
+		           result = c.calculate (result, number);
 		           break;
 		       case '/':
 		           
-		           b = sc.nextDouble ();
-		           Calc l = new Div ();
-		          Calculator.res = l.calculate (Calculator.res, b);
+		           number = getinput();
+		           c = new Divide ();
+		           result = c.calculate (result, number);
 		           break;
 		       case '=':
-		           c = '=';
-		           logger.log  ("Result is :" + Calculator.res);
+		           choice = option;
+		           print.println  ("Result is :" + result);
 		           break;
 		       default:
-		           log.info  ("Enter valid operator:");
+		    	   print.println ("Enter valid operator:");
 		           break;
 		     }
 	      }
